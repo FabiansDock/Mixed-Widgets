@@ -1,0 +1,38 @@
+GridLayoutExample:
+
+<GridLayoutExample>:
+    cols: 3
+    ToggleButton:
+        text: "OFF"
+        on_state: root.on_toggle_button_state(self)
+    Button:
+        text: "A"
+        on_press: root.on_click()
+        disabled: root.count_enabled
+    Label:
+        text: root.text
+        font_name: "fonts/lcd.ttf"
+        font_size: "60dp"
+    Switch:
+        id: my_switch
+        active: True
+    Slider:
+        id: my_slider
+        min: 0
+        max: 100
+        value: 30
+        disabled: not my_switch.active
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: str(int(my_slider.value))
+        ProgressBar:
+            max: 100
+            value: my_slider.value    
+    TextInput:
+        text: "Hi"
+        multiline: False
+        on_text_validate: root.on_text_validate(self)
+    Label:
+        text: "Your name is: " + root.post_text
+        
